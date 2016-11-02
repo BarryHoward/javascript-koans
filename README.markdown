@@ -1,6 +1,6 @@
 Link to surge: 
 
-eager-sea.surge.sh
+bad-account.surge.sh
 
 # javascript-koans
 Based on Edgecase's fantastic 
