@@ -128,6 +128,9 @@ describe("About Applying What We Have Learnt", function() {
         }
         return largestPrime;
     }
+
+    expect(largestPrime(17)).toBe(17);
+    expect(largestPrime(132)).toBe(11);
   });
 
 
@@ -147,13 +150,13 @@ describe("About Applying What We Have Learnt", function() {
         var test = (999-i)*(999-offset);
         if (isPalindrome(test) && test>largestPalindrome){
           largestPalindrome=test;
-          var outputString = (999-i) + " times " + (999-offset) + " equals "+ largestPalindrome;
+          // var outputString = (999-i) + " times " + (999-offset) + " equals "+ largestPalindrome;
         }
       }
       offset++;
     }
 
-    console.log(outputString);
+    expect(largestPalindrome).toBe(906609);
 
 
   });
@@ -212,7 +215,7 @@ describe("About Applying What We Have Learnt", function() {
       });
     }
 
-    console.log("Smallest divisible nubmer: " + lcm(1, 20));
+    expect(lcm(1,20)).toBe(232792560);
   });
 
 
@@ -230,9 +233,11 @@ describe("About Applying What We Have Learnt", function() {
       var sumSquare = numArray.map(mapSquare).reduce(reduceSum, 0);
       var squareSum = Math.pow(numArray.reduce(reduceSum, 0), 2);
 
-      return (sumSquare-squareSum);
-
+      return Math.abs(sumSquare-squareSum);
   };
+
+
+  expect(sumSquareDiff([1,3,5])).toBe(46);
 
 });
 
@@ -260,7 +265,7 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
 
-    console.log("10001 prime is " + num);
+    expect(num).toBe(104743);
   });
 
 });
