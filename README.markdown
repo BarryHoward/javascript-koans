@@ -1,6 +1,13 @@
-Link to surge: 
+Javascript Koans -- 
 
-bad-account.surge.sh
+November 1, 2016
+
+github link to project: https://github.com/BarryHoward/javascript-koans
+
+githut link to deployed website:  https://tiy-barryhoward-restaurant_group.surge.sh/
+
+
+
 
 # javascript-koans
 Based on Edgecase's fantastic 

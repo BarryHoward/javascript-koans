@@ -104,26 +104,126 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+  
   it("should find the largest prime factor of a composite number", function () {
+    function isPrime(number){
+      if (number<2){
+        return false;
+      } else {
+        for (var i=2; i<=Math.sqrt(number); i++){
+          if (number % i === 0){
+            return false;
+          }
+        }
+        return true;
+      }
+    }
 
+    function largestPrime(number){
+      var largestPrime = undefined;
+        for (var i=2; i<=number; i++){
+          if (number % i === 0 && isPrime(i)){
+            largestPrime = i;
+          }
+        }
+        return largestPrime;
+    }
   });
 
+
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+
+    function isPalindrome(number){
+      return (number.toString() === number.toString().split("").reverse().join(""));
+    }
+
+    var offset = 0;
+    var largestPalindrome = 0;
+    while (true){
+      if(largestPalindrome>(999*(999-offset))){
+        break;
+      }
+      for (var i=0; i<=offset; i++){
+        var test = (999-i)*(999-offset);
+        if (isPalindrome(test) && test>largestPalindrome){
+          largestPalindrome=test;
+          var outputString = (999-i) + " times " + (999-offset) + " equals "+ largestPalindrome;
+        }
+      }
+      offset++;
+    }
+
+    console.log(outputString);
+
 
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
 
+    console.log("Calculating...")
+    var found = false;
+    // var count = 1*2*3*2*5*7*2*3*11*13*2*17*19;
+    var count =1;
+    while (!found){
+      count++;
+      found=true;
+      for (var i=1; i<=20; i++){
+        if (count % i !== 0){
+          found=false;
+          break;
+        }
+      }
+    }
+
+
+    console.log("Smallest divisible number: " + count)
 
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
 
-  });
+    function sumSquareDiff(numArray){
+      function reduceSum(sum, element){
+        return(sum + element);
+      }
+      function mapSquare(element){
+        return Math.pow(element, 2);
+      }
+
+      var sumSquare = numArray.map(mapSquare).reduce(reduceSum, 0);
+      var squareSum = Math.pow(numArray.reduce(reduceSum, 0), 2);
+
+      return (sumSquare-squareSum);
+
+  };
+
+});
 
   it("should find the 10001st prime", function () {
 
+    function isPrime(number){
+      if (number<2){
+        return false;
+      } else {
+        for (var i=2; i<=Math.sqrt(number); i++){
+          if (number % i === 0){
+            return false;
+          }
+        }
+        return true;
+      }
+    }
+
+    var count = 1;
+    var num = 1;
+    while(count<=10001){
+      num++;
+      if (isPrime(num)){
+        count++;
+      }
+    }
+
+    console.log("10001 prime is " + num);
   });
-  */
+
 });
