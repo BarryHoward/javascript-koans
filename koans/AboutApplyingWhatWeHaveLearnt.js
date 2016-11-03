@@ -160,25 +160,61 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
 
-    console.log("Calculating...")
-    var found = false;
-    // var count = 1*2*3*2*5*7*2*3*11*13*2*17*19;
-    var count =1;
-    while (!found){
-      count++;
-      found=true;
-      for (var i=1; i<=20; i++){
-        if (count % i !== 0){
-          found=false;
-          break;
+    // ---- SIMPLE, LONG WAY ---
+    // console.log("Calculating...")
+    // var found = false;
+    // // var count = 1*2*3*2*5*7*2*3*11*13*2*17*19;
+    // var count =1;
+    // while (!found){
+    //   count++;
+    //   found=true;
+    //   for (var i=1; i<=20; i++){
+    //     if (count % i !== 0){
+    //       found=false;
+    //       break;
+    //     }
+    //   }
+    // }
+
+    // console.log("Smallest divisible number: " + count)
+
+
+    //-- MUCH FASTER WAY with Prime Factorization
+    //-- Prepare to have your mind blown
+    function primeFactor(number){
+      var primeArray = [[1]];
+      var leftOver = number;
+      for (var i=2; i<=number; i++){
+        var factorArray = [];
+        while (leftOver % i === 0){
+          leftOver = leftOver/i;
+          factorArray.push(i);
         }
+        primeArray.push(factorArray);
       }
+      return primeArray;
     }
 
+    function lcm(start, end){
+      var totalArray = Array(end-start+1).fill([]);
+      for(var i=start; i<=end; i++){
+        var tempPrimes = primeFactor(i);
+        for(var j=0; j<tempPrimes.length; j++){
+          if (totalArray[j].length<tempPrimes[j].length){
+            totalArray[j]=tempPrimes[j];
+          }
+        }
+      }
+      var flatArray = _(totalArray).flatten();
+      return flatArray.reduce(function (product, element){
+        return(product * element);
+      });
+    }
 
-    console.log("Smallest divisible number: " + count)
-
+    console.log("Smallest divisible nubmer: " + lcm(1, 20));
   });
+
+
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
 
