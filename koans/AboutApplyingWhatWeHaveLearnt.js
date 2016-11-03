@@ -182,7 +182,7 @@ describe("About Applying What We Have Learnt", function() {
     //-- MUCH FASTER WAY with Prime Factorization
     //-- Prepare to have your mind blown
     function primeFactor(number){
-      var primeArray = [[1]];
+      var primeArray = [[]];
       var leftOver = number;
       for (var i=2; i<=number; i++){
         var factorArray = [];
@@ -206,6 +206,7 @@ describe("About Applying What We Have Learnt", function() {
         }
       }
       var flatArray = _(totalArray).flatten();
+      // console.log(flatArray);
       return flatArray.reduce(function (product, element){
         return(product * element);
       });
