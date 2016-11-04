@@ -4,7 +4,7 @@ November 1, 2016
 
 github link to project: https://github.com/BarryHoward/javascript-koans
 
-githut link to deployed website:  https://barry-jsKoans.surge.sh
+githut link to deployed website:  https://barry-howard-jskoans.surge.sh
 
 
 
