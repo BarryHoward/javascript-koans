@@ -43,7 +43,8 @@ describe("About Applying What We Have Learnt", function() {
 
       var productsICanEat = [];
       productsICanEat = products.filter(function(element){
-        return (!element.ingredients.includes("mushrooms") && !element.containsNuts);
+        return !(_(element.ingredients).any(function (x){return x==="mushrooms"}) || element.containsNuts);
+        // return (!element.ingredients.includes("mushrooms") && !element.containsNuts);
       })
 
       expect(productsICanEat.length).toBe(1);
